@@ -1,9 +1,4 @@
 #include "msp430.h"
-//******************************************************************************
-//!
-//!   Empty Project that includes driverlib
-//!
-//******************************************************************************
 
 void main (void)
 {   
@@ -15,7 +10,7 @@ void main (void)
     CSCTL2 |= SELS__DCOCLK; // Set SMCLK to DCO
     CSCTL3 |= DIVS__1; // Set the Div to 1
     
-    // Configure pins to output
+    // Configure pins to output/ LEDs
     PJDIR |= BIT0 | BIT1 | BIT2 | BIT3;
     PJSEL0 &=  ~(BIT0 | BIT1 | BIT2 | BIT3);
     PJSEL1 &= ~(BIT0 | BIT1 | BIT2 | BIT3);

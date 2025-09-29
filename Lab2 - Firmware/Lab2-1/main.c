@@ -13,7 +13,7 @@ void main (void)
 
     CSCTL2 |= SELS__DCOCLK; // Set SMCLK to DCO
 
-    CSCTL3 |= DIVS__32; // Set the Div to 32
+    CSCTL3 |= DIVS__32; // Set the Div to 32 - 250kHz
 
     // Set up P3.4 to output tertiary function SMCLK
     P3DIR |= BIT4;
