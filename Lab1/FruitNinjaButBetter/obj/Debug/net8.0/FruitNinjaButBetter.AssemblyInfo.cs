@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FruitNinjaButBetter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1baa60d7fa36815fdccc719f1ee7b6d738c43248")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cd26c100f124f95166ccec83a114cc94160db81")]
 [assembly: System.Reflection.AssemblyProductAttribute("FruitNinjaButBetter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FruitNinjaButBetter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
