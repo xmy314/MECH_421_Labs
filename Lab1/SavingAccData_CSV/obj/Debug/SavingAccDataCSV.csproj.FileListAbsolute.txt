@@ -9,3 +9,14 @@ C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDat
 C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.exe
 C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.pdb
 C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\bin\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\bin\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\bin\Debug\ParsingDataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.csproj.AssemblyReference.cache
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.Form1.resources
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.Properties.Resources.resources
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.csproj.GenerateResource.cache
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.csproj.CoreCompileInputs.cache
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.pdb

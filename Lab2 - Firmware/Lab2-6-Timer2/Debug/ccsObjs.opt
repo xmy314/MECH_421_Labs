@@ -1,4 +1,5 @@
 "./main.obj"
+"./FirmwareLibhelper/generalLib.obj"
 "./driverlib/MSP430FR57xx/adc10_b.obj"
 "./driverlib/MSP430FR57xx/comp_d.obj"
 "./driverlib/MSP430FR57xx/crc.obj"

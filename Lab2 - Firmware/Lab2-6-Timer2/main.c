@@ -1,5 +1,6 @@
 #include <msp430.h>
 #include <stdint.h>
+#include "../FirmwareLibhelper/generalLib.h"
 
 volatile unsigned int risingEdgeValue = 0;
 volatile unsigned int fallingEdgeValue = 0;
@@ -98,7 +99,7 @@ __interrupt void TriggerTimer (void){
             TA0CCTL1  |= CM_1; // switch to triggering on rising edge again
         }
     }
-    _NOP();
+
     TA0CCTL1 &= ~CCIFG;
 }
 

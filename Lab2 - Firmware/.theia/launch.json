@@ -1,16 +1,95 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Lab2-10-MessagePackets",
-      "type": "ccs-debug",
-      "request": "launch",
-      "projectInfo": {
-        "name": "Lab2-10-MessagePackets",
-        "resourceId": "/Lab2-10-MessagePackets"
-      }
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Lab2-10-MessagePackets",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "Lab2-10-MessagePackets",
+                "resourceId": "/Lab2-10-MessagePackets"
+            }
+        },
+        {
+            "name": "Lab2-2",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "Lab2-2",
+                "resourceId": "/Lab2-2"
+            }
+        },
+        {
+            "name": "Lab2-6-Timer2",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "Lab2-6-Timer2",
+                "resourceId": "/Lab2-6-Timer2"
+            }
+        },
+        {
+            "name": "Lab2-4-UART",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "Lab2-4-UART",
+                "resourceId": "/Lab2-4-UART"
+            }
+        },
+        {
+            "name": "LabExam1",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "LabExam1",
+                "resourceId": "/LabExam1"
+            }
+        },
+        {
+            "name": "LabExam2",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "LabExam2",
+                "resourceId": "/LabExam2"
+            }
+        },
+        {
+            "name": "LabExam3",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "LabExam3",
+                "resourceId": "/LabExam3"
+            }
+        },
+        {
+            "name": "LabExam4",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "LabExam4",
+                "resourceId": "/LabExam4"
+            }
+        },
+        {
+            "name": "LabExam5",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "LabExam5",
+                "resourceId": "/LabExam5"
+            }
+        },
+        {
+            "name": "Lab3-ThermistorInterface",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "Lab3-ThermistorInterface",
+                "resourceId": "/Lab3-ThermistorInterface"
+            }
+        }
+    ]
 }
