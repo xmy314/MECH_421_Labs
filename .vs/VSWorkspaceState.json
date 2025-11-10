@@ -1,9 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Lab1",
-    "\\Lab1\\stateMachineTestingProgram"
+    "\\Lab 3",
+    "\\Lab 3\\SavingThermistorData_CSV",
+    "\\Lab1"
   ],
-  "SelectedNode": "\\Lab1\\stateMachineTestingProgram\\Form1.Designer.cs",
+  "SelectedNode": "\\Lab 3\\SavingThermistorData_CSV\\SavingAccDataCSV.sln",
   "PreviewInSolutionExplorer": false
 }

@@ -1,0 +1,11 @@
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\bin\Debug\Receiving_DataFromMSP430.exe.config
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\bin\Debug\Receiving_DataFromMSP430.exe
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\bin\Debug\Receiving_DataFromMSP430.pdb
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.csproj.AssemblyReference.cache
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.Form1.resources
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.Properties.Resources.resources
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.csproj.GenerateResource.cache
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.csproj.CoreCompileInputs.cache
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.exe
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.pdb
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.exe.config
