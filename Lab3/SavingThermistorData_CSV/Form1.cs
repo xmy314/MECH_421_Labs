@@ -30,6 +30,14 @@ namespace SavingAccDataCSV
 
         private StreamWriter streamWriter;
 
+        private readonly (double measured, double actual)[] calibrationPoints = new (double, double)[]
+        {
+            (3.31, 0.0),    // near 0 °C
+            (35.9, 34.1),  // near 40 °C
+            (44.9, 41.5)    // near 60 °C
+        };
+
+
         public Form1()
         {
             InitializeComponent();
@@ -81,9 +89,9 @@ namespace SavingAccDataCSV
         private void UpdateQueues(object sender, EventArgs e)
         {
             if (serialPort_MSP430.IsOpen)
-                textBox_SerialBytestoRead.Text = serialPort_MSP430.BytesToRead.ToString();
-            textBox_TempStringLength.Text = serialDataString.Length.ToString();
-            ItemsInQueue.Text = dataQueue.Count.ToString(); // counting characters in the Queue
+                //textBox_SerialBytestoRead.Text = serialPort_MSP430.BytesToRead.ToString();
+            //textBox_TempStringLength.Text = serialDataString.Length.ToString();
+            //ItemsInQueue.Text = dataQueue.Count.ToString(); // counting characters in the Queue
             serialDataString = "";
 
             // Display contents of queue container
@@ -357,7 +365,7 @@ namespace SavingAccDataCSV
                         //textBox_Ax.Text = combinedValue.ToString();
                         dataQueueVolt.Enqueue(combinedValue);
 
-                        textBox_Ax.Text = combinedValue.ToString();
+                        textBox_voltage.Text = combinedValue.ToString();
 
                         if (dataQueueVolt.Count >= 20)
                         {
@@ -365,15 +373,15 @@ namespace SavingAccDataCSV
                             double avg = dataQueueVolt.Average();
 
                             temperatureC = convertToCelsius(avg);
-                            textBox_Ay.Text = temperatureC.ToString(); // Temperature display
+                            textBox_temperature.Text = temperatureC.ToString("F2"); // Temperature display
 
                             // Clear the queue for the next batch
                             while (dataQueueVolt.TryDequeue(out _)) { }
 
                         }
 
-                        double Error = calculateError(1, 1);
-                        textBox_Az.Text = Error.ToString(); // Error display
+                        double Error = calculateCompensationDifference(temperatureC);
+                        textBox_Error.Text = Error.ToString("F2"); // Error display
 
                         tempChart.Series["Temperature"].Points.AddXY(sampleIndex++, temperatureC);
                         if (tempChart.Series["Temperature"].Points.Count > 200)
@@ -396,6 +404,36 @@ namespace SavingAccDataCSV
             }
         }
 
+        // Apply piecewise linear correction
+        private double applyErrorCompensation(double measuredTemp)
+        {
+            // Clamp below first point
+            if (measuredTemp <= calibrationPoints[0].measured)
+                return calibrationPoints[0].actual;
+
+            // Clamp above last point
+            if (measuredTemp >= calibrationPoints[calibrationPoints.Length - 1].measured)
+                return calibrationPoints[calibrationPoints.Length - 1].actual;
+
+            // Find interval
+            for (int i = 0; i < calibrationPoints.Length - 1; i++)
+            {
+                var p1 = calibrationPoints[i];
+                var p2 = calibrationPoints[i + 1];
+
+                if (measuredTemp >= p1.measured && measuredTemp <= p2.measured)
+                {
+                    // Linear interpolation
+                    double t = (measuredTemp - p1.measured) / (p2.measured - p1.measured);
+                    return p1.actual + t * (p2.actual - p1.actual);
+                }
+            }
+
+            // Fallback
+            return measuredTemp;
+        }
+
+
         private double convertToCelsius(double rawVoltage)
         {   
             double convertVoltage = ((0.64*(rawVoltage-300))/180) + 1.06;
@@ -412,9 +450,12 @@ namespace SavingAccDataCSV
             //return temp;
         }
 
-        private double calculateError(int convertedValue, int actualValue)
+        // Calculate difference between raw and compensated values
+        private double calculateCompensationDifference(double rawTemp)
         {
-            return 0.0;
+            double corrected = applyErrorCompensation(rawTemp);
+            return corrected - rawTemp; // Positive if correction raises the value
         }
+
     }
 }

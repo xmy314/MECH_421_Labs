@@ -1,0 +1,55 @@
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\bin\Debug\ParsingDataFromMSP430.exe.config
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\bin\Debug\ParsingDataFromMSP430.exe
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\bin\Debug\ParsingDataFromMSP430.pdb
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.csproj.AssemblyReference.cache
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.Form1.resources
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.Properties.Resources.resources
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.csproj.GenerateResource.cache
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.csproj.CoreCompileInputs.cache
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.exe
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.pdb
+C:\Users\kylea\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\bin\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\bin\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\bin\Debug\ParsingDataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.csproj.AssemblyReference.cache
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.Form1.resources
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.Properties.Resources.resources
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.csproj.GenerateResource.cache
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\SavingAccDataCSV.csproj.CoreCompileInputs.cache
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab1\SavingAccData_CSV\obj\Debug\ParsingDataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\bin\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\bin\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\bin\Debug\ParsingDataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\obj\Debug\SavingAccDataCSV.csproj.AssemblyReference.cache
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\obj\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\obj\Debug\SavingAccDataCSV.Form1.resources
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\obj\Debug\ParsingDataFromMSP430.Properties.Resources.resources
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\obj\Debug\SavingAccDataCSV.csproj.GenerateResource.cache
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\obj\Debug\SavingAccDataCSV.csproj.CoreCompileInputs.cache
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\obj\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab 3\SavingThermistorData_CSV\obj\Debug\ParsingDataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\bin\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\bin\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\bin\Debug\ParsingDataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\obj\Debug\SavingAccDataCSV.csproj.AssemblyReference.cache
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\obj\Debug\SavingAccDataCSV.Form1.resources
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\obj\Debug\ParsingDataFromMSP430.Properties.Resources.resources
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\obj\Debug\SavingAccDataCSV.csproj.GenerateResource.cache
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\obj\Debug\SavingAccDataCSV.csproj.CoreCompileInputs.cache
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\obj\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\obj\Debug\ParsingDataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab 3\SavingLoadcellData_CSV\obj\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\bin\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\bin\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\bin\Debug\ParsingDataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\obj\Debug\SavingAccDataCSV.csproj.AssemblyReference.cache
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\obj\Debug\ParsingDataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\obj\Debug\SavingAccDataCSV.Form1.resources
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\obj\Debug\ParsingDataFromMSP430.Properties.Resources.resources
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\obj\Debug\SavingAccDataCSV.csproj.GenerateResource.cache
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\obj\Debug\SavingAccDataCSV.csproj.CoreCompileInputs.cache
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\obj\Debug\ParsingDataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab3\SavingLoadcellData_CSV\obj\Debug\ParsingDataFromMSP430.pdb

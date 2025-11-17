@@ -45,6 +45,9 @@ namespace SavingAccDataCSV
 
             tempChart.Series.Clear();
 
+            progressBar_weight.Minimum = 0;
+            progressBar_weight.Maximum = 3000;
+
             Series tempSeries = new Series
             {
                 Name = "Mass",
@@ -84,8 +87,8 @@ namespace SavingAccDataCSV
         {
             //if (serialPort_MSP430.IsOpen)
             //    textBox_SerialBytestoRead.Text = serialPort_MSP430.BytesToRead.ToString();
-            textBox_TempStringLength.Text = serialDataString.Length.ToString();
-            ItemsInQueue.Text = dataQueue.Count.ToString(); // counting characters in the Queue
+            //textBox_TempStringLength.Text = serialDataString.Length.ToString();
+            //ItemsInQueue.Text = dataQueue.Count.ToString(); // counting characters in the Queue
             serialDataString = "";
 
             // Display contents of queue container
@@ -158,77 +161,77 @@ namespace SavingAccDataCSV
 
         private void checkBox_saveFile_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_saveFile.Checked)
-            {
-                startStreamingToFile();
-            }
-            else
-            {
-                stopWritingToFile();
-            }
+            //if (checkBox_saveFile.Checked)
+            //{
+            //    startStreamingToFile();
+            //}
+            //else
+            //{
+            //    stopWritingToFile();
+            //}
         }
 
         // Save File Dialog implementation
-        private void button1_Click(object sender, EventArgs e)
-        {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-            {
-                // Configure the SaveFileDialog
-                saveFileDialog.Title = "Save CSV Data File";
-                saveFileDialog.Filter = "CSV files (*.csv)|*.csv|Text files (*.txt)|*.txt|All files (*.*)|*.*";
-                saveFileDialog.FilterIndex = 1; // Default to CSV files
-                saveFileDialog.DefaultExt = "csv";
-                saveFileDialog.AddExtension = true;
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+        //    {
+        //        // Configure the SaveFileDialog
+        //        saveFileDialog.Title = "Save CSV Data File";
+        //        saveFileDialog.Filter = "CSV files (*.csv)|*.csv|Text files (*.txt)|*.txt|All files (*.*)|*.*";
+        //        saveFileDialog.FilterIndex = 1; // Default to CSV files
+        //        saveFileDialog.DefaultExt = "csv";
+        //        saveFileDialog.AddExtension = true;
 
-                // Set initial directory
-                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        //        // Set initial directory
+        //        saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                // Set default filename with timestamp
-                saveFileDialog.FileName = $"MassData_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+        //        // Set default filename with timestamp
+        //        saveFileDialog.FileName = $"MassData_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
 
-                // If textbox already has a filename, use it
-                if (!string.IsNullOrWhiteSpace(textBox_Filename.Text))
-                {
-                    try
-                    {
-                        // If it's a full path, extract filename and directory
-                        if (Path.IsPathRooted(textBox_Filename.Text))
-                        {
-                            saveFileDialog.FileName = Path.GetFileName(textBox_Filename.Text);
-                            string directory = Path.GetDirectoryName(textBox_Filename.Text);
-                            if (Directory.Exists(directory))
-                            {
-                                saveFileDialog.InitialDirectory = directory;
-                            }
-                        }
-                        else
-                        {
-                            // Just a filename
-                            saveFileDialog.FileName = textBox_Filename.Text;
-                        }
-                    }
-                    catch
-                    {
-                        // If there's any error with the existing path, use defaults
-                    }
-                }
+        //        // If textbox already has a filename, use it
+        //        if (!string.IsNullOrWhiteSpace(textBox_Filename.Text))
+        //        {
+        //            try
+        //            {
+        //                // If it's a full path, extract filename and directory
+        //                if (Path.IsPathRooted(textBox_Filename.Text))
+        //                {
+        //                    saveFileDialog.FileName = Path.GetFileName(textBox_Filename.Text);
+        //                    string directory = Path.GetDirectoryName(textBox_Filename.Text);
+        //                    if (Directory.Exists(directory))
+        //                    {
+        //                        saveFileDialog.InitialDirectory = directory;
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    // Just a filename
+        //                    saveFileDialog.FileName = textBox_Filename.Text;
+        //                }
+        //            }
+        //            catch
+        //            {
+        //                // If there's any error with the existing path, use defaults
+        //            }
+        //        }
 
-                // Show the dialog
-                DialogResult result = saveFileDialog.ShowDialog();
+        //        // Show the dialog
+        //        DialogResult result = saveFileDialog.ShowDialog();
 
-                if (result == DialogResult.OK)
-                {
-                    // Update the textbox with the selected filename
-                    textBox_Filename.Text = saveFileDialog.FileName;
+        //        if (result == DialogResult.OK)
+        //        {
+        //            // Update the textbox with the selected filename
+        //            textBox_Filename.Text = saveFileDialog.FileName;
 
-                    // Optional: Show confirmation message
-                    MessageBox.Show($"File path selected: {saveFileDialog.FileName}",
-                                  "File Selected",
-                                  MessageBoxButtons.OK,
-                                  MessageBoxIcon.Information);
-                }
-            }
-        }
+        //            // Optional: Show confirmation message
+        //            MessageBox.Show($"File path selected: {saveFileDialog.FileName}",
+        //                          "File Selected",
+        //                          MessageBoxButtons.OK,
+        //                          MessageBoxIcon.Information);
+        //        }
+        //    }
+        //}
 
         private void serialPort_MSP430_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -254,11 +257,11 @@ namespace SavingAccDataCSV
                     // Disable the form to prevent user interaction
                     this.Enabled = false;
 
-                    // Stop file writing
-                    if (checkBox_saveFile.Checked)
-                    {
-                        stopWritingToFile();
-                    }
+                    //// Stop file writing
+                    //if (checkBox_saveFile.Checked)
+                    //{
+                    //    stopWritingToFile();
+                    //}
 
                     // Re-enable form and close
                     this.Enabled = true;
@@ -270,10 +273,10 @@ namespace SavingAccDataCSV
                 else
                 {
                     // Just stop file writing if no serial connection
-                    if (checkBox_saveFile.Checked)
-                    {
-                        stopWritingToFile();
-                    }
+                    //if (checkBox_saveFile.Checked)
+                    //{
+                    //    stopWritingToFile();
+                    //}
                 }
             }
             catch (Exception ex)
@@ -284,57 +287,57 @@ namespace SavingAccDataCSV
         }
 
         // Helper methods for file writing
-        private void startStreamingToFile()
-        {
-            try
-            {
-                // Validate filename
-                if (string.IsNullOrWhiteSpace(textBox_Filename.Text))
-                {
-                    MessageBox.Show("Please enter a filename");
-                    checkBox_saveFile.Checked = false;
-                    return;
-                }
+        //private void startStreamingToFile()
+        //{
+        //    try
+        //    {
+        //        // Validate filename
+        //        if (string.IsNullOrWhiteSpace(textBox_Filename.Text))
+        //        {
+        //            MessageBox.Show("Please enter a filename");
+        //            checkBox_saveFile.Checked = false;
+        //            return;
+        //        }
 
-                // Create directory if it doesn't exist
-                string directory = Path.GetDirectoryName(textBox_Filename.Text);
-                if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
-                {
-                    Directory.CreateDirectory(directory);
-                }
+        //        // Create directory if it doesn't exist
+        //        string directory = Path.GetDirectoryName(textBox_Filename.Text);
+        //        if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+        //        {
+        //            Directory.CreateDirectory(directory);
+        //        }
 
-                streamWriter = new StreamWriter(textBox_Filename.Text);
-                // Write CSV header
-                streamWriter.WriteLine("Mass (Kilograms), Voltage(V), Timestamp");
+        //        streamWriter = new StreamWriter(textBox_Filename.Text);
+        //        // Write CSV header
+        //        streamWriter.WriteLine("Mass (Kilograms), Voltage(V), Timestamp");
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error starting file writing: {ex.Message}");
-                checkBox_saveFile.Checked = false;
-            }
-        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error starting file writing: {ex.Message}");
+        //        checkBox_saveFile.Checked = false;
+        //    }
+        //}
 
-        private void stopWritingToFile()
-        {
-            try
-            {
+        //private void stopWritingToFile()
+        //{
+        //    try
+        //    {
 
-                if (streamWriter != null)
-                {
-                    streamWriter.Flush();
-                    streamWriter.Close();
-                    streamWriter.Dispose();
-                    streamWriter = null;
-                }
+        //        if (streamWriter != null)
+        //        {
+        //            streamWriter.Flush();
+        //            streamWriter.Close();
+        //            streamWriter.Dispose();
+        //            streamWriter = null;
+        //        }
 
-                MessageBox.Show("File recording stopped and file closed.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error stopping file recording: {ex.Message}");
-            }
-        }
+        //        MessageBox.Show("File recording stopped and file closed.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Error stopping file recording: {ex.Message}");
+        //    }
+        //}
 
         // Process incoming data stream and display instantaneous values
         private void processDataQueue(int value)
@@ -382,14 +385,15 @@ namespace SavingAccDataCSV
                             avg = dataQueueVolt.Average();
 
                             mass = convertTokg(avg);
-                            textBox_Ay.Text = mass.ToString(); // Temperature display
+                            textBox_Ay.Text = mass.ToString("F2"); // Temperature display
+                            progressBar_weight.Value = (int)mass;
 
                             // Clear the queue for the next batch
                             while (dataQueueVolt.TryDequeue(out _)) { }
                         }
 
                         double Error = calculateError(1, 1);
-                        textBox_Az.Text = Error.ToString(); // Error display
+                        textBox_Az.Text = Error.ToString("F2"); // Error display
 
                         tempChart.Series["Mass"].Points.AddXY(sampleIndex++, mass);
                         if (tempChart.Series["Mass"].Points.Count > 200)
@@ -399,12 +403,12 @@ namespace SavingAccDataCSV
 
                         tempChart.ResetAutoValues();
 
-                        if (checkBox_saveFile.Checked && streamWriter != null)
-                        {
-                            // Write the latest Ax, Ay, Az values to file with timestamp
-                            string timestamp = DateTime.Now.ToString("HH:mm:ss.fff");
-                            streamWriter.WriteLine($"{mass}, {avg}, {timestamp}");
-                        }
+                        //if (checkBox_saveFile.Checked && streamWriter != null)
+                        //{
+                        //    // Write the latest Ax, Ay, Az values to file with timestamp
+                        //    string timestamp = DateTime.Now.ToString("HH:mm:ss.fff");
+                        //    streamWriter.WriteLine($"{mass}, {avg}, {timestamp}");
+                        //}
 
                         nextDataStream = DataStream.LEAD; // Expect LEAD
                         break;
@@ -417,8 +421,6 @@ namespace SavingAccDataCSV
             
             return (-3.3934 * (rawVoltage - tare_offset)) ;       // Convert to Celsius
 
-            //double temp = (rawVoltage / 1023.0) * 3.3; // Convert ADC value to voltage
-            //return temp;
         }
 
         private void button2_Click(object sender, EventArgs e)
