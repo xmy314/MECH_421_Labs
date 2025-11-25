@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label_SerialDataStream = new System.Windows.Forms.Label();
             this.ItemsInQueue = new System.Windows.Forms.TextBox();
@@ -43,9 +43,7 @@
             this.label_SerialBytesToRead = new System.Windows.Forms.Label();
             this.textBox_SerialBytestoRead = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox_Az = new System.Windows.Forms.TextBox();
             this.textBox_Ay = new System.Windows.Forms.TextBox();
-            this.label_Az = new System.Windows.Forms.Label();
             this.label_Ay = new System.Windows.Forms.Label();
             this.label_Ax = new System.Windows.Forms.Label();
             this.textBox_Ax = new System.Windows.Forms.TextBox();
@@ -202,7 +200,6 @@
             this.label_SerialBytesToRead.Name = "label_SerialBytesToRead";
             this.label_SerialBytesToRead.Size = new System.Drawing.Size(170, 36);
             this.label_SerialBytesToRead.TabIndex = 2;
-            this.label_SerialBytesToRead.Text = "Is it stable?";
             this.label_SerialBytesToRead.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox_SerialBytestoRead
@@ -218,7 +215,7 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 6;
+            this.tableLayoutPanel2.ColumnCount = 4;
             this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel2, 2);
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.7563F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.43698F));
@@ -226,9 +223,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.59664F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.38655F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.06723F));
-            this.tableLayoutPanel2.Controls.Add(this.textBox_Az, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBox_Ay, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label_Az, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.label_Ay, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label_Ax, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBox_Ax, 1, 0);
@@ -241,48 +236,26 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(476, 55);
             this.tableLayoutPanel2.TabIndex = 22;
             // 
-            // textBox_Az
-            // 
-            this.textBox_Az.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_Az.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Az.Location = new System.Drawing.Point(392, 3);
-            this.textBox_Az.Multiline = true;
-            this.textBox_Az.Name = "textBox_Az";
-            this.textBox_Az.Size = new System.Drawing.Size(81, 49);
-            this.textBox_Az.TabIndex = 7;
-            // 
             // textBox_Ay
             // 
             this.textBox_Ay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Ay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Ay.Location = new System.Drawing.Point(237, 3);
+            this.textBox_Ay.Location = new System.Drawing.Point(359, 3);
             this.textBox_Ay.Multiline = true;
             this.textBox_Ay.Name = "textBox_Ay";
-            this.textBox_Ay.Size = new System.Drawing.Size(72, 49);
+            this.textBox_Ay.Size = new System.Drawing.Size(114, 49);
             this.textBox_Ay.TabIndex = 6;
-            // 
-            // label_Az
-            // 
-            this.label_Az.AutoSize = true;
-            this.label_Az.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_Az.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Az.Location = new System.Drawing.Point(315, 0);
-            this.label_Az.Name = "label_Az";
-            this.label_Az.Size = new System.Drawing.Size(71, 55);
-            this.label_Az.TabIndex = 4;
-            this.label_Az.Text = "Error:";
-            this.label_Az.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_Ay
             // 
             this.label_Ay.AutoSize = true;
             this.label_Ay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_Ay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Ay.Location = new System.Drawing.Point(159, 0);
+            this.label_Ay.Location = new System.Drawing.Point(240, 0);
             this.label_Ay.Name = "label_Ay";
-            this.label_Ay.Size = new System.Drawing.Size(72, 55);
+            this.label_Ay.Size = new System.Drawing.Size(113, 55);
             this.label_Ay.TabIndex = 2;
-            this.label_Ay.Text = "Mass (g):";
+            this.label_Ay.Text = "Distance (mm):";
             this.label_Ay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_Ax
@@ -292,7 +265,7 @@
             this.label_Ax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Ax.Location = new System.Drawing.Point(3, 0);
             this.label_Ax.Name = "label_Ax";
-            this.label_Ax.Size = new System.Drawing.Size(68, 55);
+            this.label_Ax.Size = new System.Drawing.Size(106, 55);
             this.label_Ax.TabIndex = 0;
             this.label_Ax.Text = "Raw Voltage:";
             this.label_Ax.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -301,10 +274,10 @@
             // 
             this.textBox_Ax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Ax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_Ax.Location = new System.Drawing.Point(77, 3);
+            this.textBox_Ax.Location = new System.Drawing.Point(115, 3);
             this.textBox_Ax.Multiline = true;
             this.textBox_Ax.Name = "textBox_Ax";
-            this.textBox_Ax.Size = new System.Drawing.Size(76, 49);
+            this.textBox_Ax.Size = new System.Drawing.Size(119, 49);
             this.textBox_Ax.TabIndex = 5;
             // 
             // checkBox_saveFile
@@ -345,12 +318,12 @@
             // 
             // tempChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.tempChart.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.tempChart.ChartAreas.Add(chartArea2);
             this.tableLayoutPanel1.SetColumnSpan(this.tempChart, 2);
             this.tempChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.tempChart.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.tempChart.Legends.Add(legend2);
             this.tempChart.Location = new System.Drawing.Point(3, 209);
             this.tempChart.Name = "tempChart";
             this.tempChart.Size = new System.Drawing.Size(476, 206);
@@ -408,11 +381,9 @@
         private System.Windows.Forms.TextBox textBox_TempStringLength;
         private System.IO.Ports.SerialPort serialPort_MSP430;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label label_Az;
         private System.Windows.Forms.Label label_Ay;
         private System.Windows.Forms.Label label_Ax;
         private System.Windows.Forms.TextBox textBox_Ax;
-        private System.Windows.Forms.TextBox textBox_Az;
         private System.Windows.Forms.TextBox textBox_Ay;
         private System.Windows.Forms.CheckBox checkBox_saveFile;
         private System.Windows.Forms.Button button1;

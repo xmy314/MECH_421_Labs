@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Receiving_DataFromMSP430
 {
@@ -17,6 +18,8 @@ namespace Receiving_DataFromMSP430
         private string serialDataString = "";
         private Timer myTimer = new Timer();
         private ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
+
+        private int bytesReceivedThisInterval = 0;
 
         public Form1()
         {
@@ -50,15 +53,20 @@ namespace Receiving_DataFromMSP430
         {
             if (serialPort_MSP430.IsOpen)
                 textBox_SerialBytestoRead.Text = serialPort_MSP430.BytesToRead.ToString();
-            textBox_TempStringLength.Text = serialDataString.Length.ToString();
-            ItemsInQueue.Text = dataQueue.Count.ToString(); // counting characters in the Queue
-            serialDataString = "";
 
-            // Display contents of queue container
+            ItemsInQueue.Text = dataQueue.Count.ToString();
+
+            int count = 0;
+            // Display queue contents
             while (dataQueue.TryDequeue(out int value))
             {
+                count++;
                 textBox_Data.AppendText(value.ToString() + ", ");
             }
+
+            double bitrate = count * 10; // 10 bits per UART frame, 1 second interval
+            textBox_bitRate.Text = $"{bitrate:F0} bps";
+
         }
 
         private void comboBoxCOMPorts_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,7 +88,7 @@ namespace Receiving_DataFromMSP430
                     byte[] TxByte = Encoding.Unicode.GetBytes(transmit);
 
                     serialPort_MSP430.Open();
-                    serialPort_MSP430.Write(TxByte, 0, 1);
+                    //serialPort_MSP430.Write(TxByte, 0, 1);
 
                     buttonConnectSerial.Text = "Disconnect Serial";
                     comboBoxCOMPorts.Enabled = false; // Disable port selection while connected
@@ -91,9 +99,9 @@ namespace Receiving_DataFromMSP430
                     // Disconnect from serial port
                     string transmit = "z";
                     byte[] TxByte = Encoding.Unicode.GetBytes(transmit);
-                    serialPort_MSP430.Write(TxByte, 0, 1);
+                    //serialPort_MSP430.Write(TxByte, 0, 1);
                     serialPort_MSP430.Close();
-                    
+
                     buttonConnectSerial.Text = "Connect Serial";
                     comboBoxCOMPorts.Enabled = true; // Re-enable port selection
                     //MessageBox.Show("Successfully Disconnected.");
@@ -126,6 +134,9 @@ namespace Receiving_DataFromMSP430
             {
                 newByte = serialPort_MSP430.ReadByte();
                 dataQueue.Enqueue(newByte);
+                //// Count bytes for bitrate calculation
+                //System.Threading.Interlocked.Increment(ref bytesReceivedThisInterval);
+
                 serialDataString = serialDataString + newByte.ToString() + ", ";
                 bytesToRead = serialPort_MSP430.BytesToRead;
             }
@@ -139,7 +150,7 @@ namespace Receiving_DataFromMSP430
                 {
                     string transmit_close = "z"; // or "Z", both will work 
                     byte[] TxByte = Encoding.Unicode.GetBytes(transmit_close);
-                    serialPort_MSP430.Write(TxByte, 0, 1);
+                    //serialPort_MSP430.Write(TxByte, 0, 1);
                     serialPort_MSP430.Close();
 
                 }

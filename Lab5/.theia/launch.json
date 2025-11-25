@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "UARTComm115_2kbps",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "UARTComm115_2kbps",
+                "resourceId": "/UARTComm115_2kbps"
+            }
+        },
+        {
+            "name": "GreenBoardTest",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "GreenBoardTest",
+                "resourceId": "/GreenBoardTest"
+            }
+        }
+    ]
+}

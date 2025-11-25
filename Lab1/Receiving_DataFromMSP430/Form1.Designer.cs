@@ -33,7 +33,7 @@
             this.textBox_Data = new System.Windows.Forms.TextBox();
             this.label_SerialDataStream = new System.Windows.Forms.Label();
             this.ItemsInQueue = new System.Windows.Forms.TextBox();
-            this.textBox_TempStringLength = new System.Windows.Forms.TextBox();
+            this.textBox_bitRate = new System.Windows.Forms.TextBox();
             this.label_ItemsInQueue = new System.Windows.Forms.Label();
             this.label_TempStringLength = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.tableLayoutPanel1.Controls.Add(this.textBox_Data, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.label_SerialDataStream, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.ItemsInQueue, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.textBox_TempStringLength, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.textBox_bitRate, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label_ItemsInQueue, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label_TempStringLength, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
@@ -111,16 +111,16 @@
             this.ItemsInQueue.Size = new System.Drawing.Size(295, 37);
             this.ItemsInQueue.TabIndex = 12;
             // 
-            // textBox_TempStringLength
+            // textBox_bitRate
             // 
-            this.textBox_TempStringLength.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_TempStringLength.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_TempStringLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_TempStringLength.Location = new System.Drawing.Point(184, 97);
-            this.textBox_TempStringLength.Multiline = true;
-            this.textBox_TempStringLength.Name = "textBox_TempStringLength";
-            this.textBox_TempStringLength.Size = new System.Drawing.Size(295, 37);
-            this.textBox_TempStringLength.TabIndex = 11;
+            this.textBox_bitRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_bitRate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_bitRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_bitRate.Location = new System.Drawing.Point(184, 97);
+            this.textBox_bitRate.Multiline = true;
+            this.textBox_bitRate.Name = "textBox_bitRate";
+            this.textBox_bitRate.Size = new System.Drawing.Size(295, 37);
+            this.textBox_bitRate.TabIndex = 11;
             // 
             // label_ItemsInQueue
             // 
@@ -143,7 +143,7 @@
             this.label_TempStringLength.Name = "label_TempStringLength";
             this.label_TempStringLength.Size = new System.Drawing.Size(175, 43);
             this.label_TempStringLength.TabIndex = 6;
-            this.label_TempStringLength.Text = "Temp String Length";
+            this.label_TempStringLength.Text = "Bit Rate:";
             this.label_TempStringLength.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -164,7 +164,7 @@
             this.comboBoxCOMPorts.FormattingEnabled = true;
             this.comboBoxCOMPorts.Location = new System.Drawing.Point(3, 3);
             this.comboBoxCOMPorts.Name = "comboBoxCOMPorts";
-            this.comboBoxCOMPorts.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxCOMPorts.Size = new System.Drawing.Size(140, 24);
             this.comboBoxCOMPorts.TabIndex = 0;
             this.comboBoxCOMPorts.SelectedIndexChanged += new System.EventHandler(this.comboBoxCOMPorts_SelectedIndexChanged);
             // 
@@ -205,6 +205,7 @@
             // 
             // serialPort_MSP430
             // 
+            this.serialPort_MSP430.BaudRate = 115200;
             this.serialPort_MSP430.PortName = "COM7";
             this.serialPort_MSP430.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_MSP430_DataReceived);
             // 
@@ -237,7 +238,7 @@
         private System.Windows.Forms.TextBox textBox_Data;
         private System.Windows.Forms.Label label_SerialDataStream;
         private System.Windows.Forms.TextBox ItemsInQueue;
-        private System.Windows.Forms.TextBox textBox_TempStringLength;
+        private System.Windows.Forms.TextBox textBox_bitRate;
         private System.IO.Ports.SerialPort serialPort_MSP430;
     }
 }

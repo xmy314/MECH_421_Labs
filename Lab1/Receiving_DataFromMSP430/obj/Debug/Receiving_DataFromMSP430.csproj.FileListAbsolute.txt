@@ -9,3 +9,14 @@ C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Recei
 C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.exe
 C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.pdb
 C:\Users\kylea\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\bin\Debug\Receiving_DataFromMSP430.exe.config
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\bin\Debug\Receiving_DataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\bin\Debug\Receiving_DataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.csproj.AssemblyReference.cache
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.Form1.resources
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.Properties.Resources.resources
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.csproj.GenerateResource.cache
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.csproj.CoreCompileInputs.cache
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.exe
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.pdb
+C:\Repos\MECH_421_Labs\Lab1\Receiving_DataFromMSP430\obj\Debug\Receiving_DataFromMSP430.exe.config

@@ -23,8 +23,7 @@ namespace SavingAccDataCSV
         private DataStream nextDataStream;
         private int MSB, LSB;
         int sampleIndex = 0;
-        double mass;
-        double tare_offset = 769;
+        double distance;
         double avg;
 
         private ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
@@ -45,12 +44,9 @@ namespace SavingAccDataCSV
 
             tempChart.Series.Clear();
 
-            progressBar_weight.Minimum = 0;
-            progressBar_weight.Maximum = 3000;
-
             Series tempSeries = new Series
             {
-                Name = "Mass",
+                Name = "Distance",
                 Color = Color.Blue,
                 IsVisibleInLegend = true,
                 IsXValueIndexed = false,
@@ -59,10 +55,22 @@ namespace SavingAccDataCSV
                 YValueType = ChartValueType.Double
             };
 
+            Series ADCSeries = new Series
+            {
+                Name = "ADC",
+                Color = Color.Red,
+                IsVisibleInLegend = true,
+                IsXValueIndexed = false,
+                ChartType = SeriesChartType.Line,
+                XValueType = ChartValueType.Int32,
+                YValueType = ChartValueType.Double
+            };
+
             tempChart.Series.Add(tempSeries);
+            tempChart.Series.Add(ADCSeries);
 
             tempChart.ChartAreas[0].AxisX.Title = "Sample Number";
-            tempChart.ChartAreas[0].AxisY.Title = "Mass (kg)";
+            tempChart.ChartAreas[0].AxisY.Title ="ADC/Distance (mm)";
 
             if (comboBoxCOMPorts.Items.Count == 0)
             {
@@ -136,7 +144,8 @@ namespace SavingAccDataCSV
                     buttonConnectSerial.Text = "Connect Serial";
                     comboBoxCOMPorts.Enabled = true; // Re-enable port selection
                     //MessageBox.Show("Successfully Disconnected.");
-                    tempChart.Series["Mass"].Points.Clear();
+                    tempChart.Series["Distance"].Points.Clear();
+                    tempChart.Series["ADC"].Points.Clear();
                     sampleIndex = 0;
 
                 }
@@ -361,6 +370,13 @@ namespace SavingAccDataCSV
 
                         LSB = value;
                         int combinedValue = ((MSB << 5) | LSB); // Combine MSB and LSB
+
+                        tempChart.Series["ADC"].Points.AddXY(sampleIndex++, combinedValue);
+                        if (tempChart.Series["ADC"].Points.Count > 200)
+                        {
+                            tempChart.Series["ADC"].Points.RemoveAt(0);
+                        }
+
                         //textBox_Ax.Text = combinedValue.ToString();
                         dataQueueVolt.Enqueue(combinedValue);
 
@@ -379,26 +395,30 @@ namespace SavingAccDataCSV
 
                         }
 
-                        if (dataQueueVolt.Count >= 100)
+                        if (dataQueueVolt.Count >= 20)
                         {
                             // Compute average of all items currently in the queue
                             avg = dataQueueVolt.Average();
+                            distance = convertTomm(avg);
 
-                            mass = convertTokg(avg);
-                            textBox_Ay.Text = mass.ToString("F2"); // Temperature display
-                            progressBar_weight.Value = (int)mass;
+                            if ((distance > 220.0) || (distance < 29.0))
+                            {
+                                textBox_Status.Text = "Out of Range";
+                            }
+                            else
+                            {
+                                textBox_Status.Text = "";
+                                textBox_Distance.Text = distance.ToString("F2"); // Temperature display
+                            }
 
                             // Clear the queue for the next batch
                             while (dataQueueVolt.TryDequeue(out _)) { }
                         }
-
-                        double Error = calculateError(1, 1);
-                        textBox_Az.Text = Error.ToString("F2"); // Error display
-
-                        tempChart.Series["Mass"].Points.AddXY(sampleIndex++, mass);
-                        if (tempChart.Series["Mass"].Points.Count > 200)
+                        
+                        tempChart.Series["Distance"].Points.AddXY(sampleIndex++, distance);
+                        if (tempChart.Series["Distance"].Points.Count > 200)
                         {
-                            tempChart.Series["Mass"].Points.RemoveAt(0);
+                            tempChart.Series["Distance"].Points.RemoveAt(0);
                         }
 
                         tempChart.ResetAutoValues();
@@ -416,21 +436,11 @@ namespace SavingAccDataCSV
             }
         }
 
-        private double convertTokg(double rawVoltage) // Need to calibrate that....
-        {   
-            
-            return (-3.3934 * (rawVoltage - tare_offset)) ;       // Convert to Celsius
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {   if (avg != 0)
-                tare_offset = avg;
-        }
-
-        private double calculateError(int convertedValue, int actualValue)
+        private double convertTomm(double rawVoltage) // Need to calibrate that....
         {
-            return 0.0;
+
+            return (2359.1 * Math.Pow(rawVoltage, -0.659));      // Convert to Celsius
+
         }
 
         public static bool IsStable(IList<double> samples, double stabilityThreshold)
