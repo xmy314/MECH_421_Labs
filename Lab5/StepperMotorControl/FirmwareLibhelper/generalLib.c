@@ -22,9 +22,12 @@
 #define SWITCH_2 BIT1
 
 void Clock_Init_DCO_8MHz(void){
-    CSCTL0 = CSKEY; // Set default password to clock 
-    CSCTL1 = DCOFSEL0 + DCOFSEL1; // DCO = 8 MHz
-    CSCTL2 |= SELS__DCOCLK;
+    // Setup Subsystem Master Clock (SMCLK) to 1Mhz
+    CSCTL0 = CSKEY;                         // Set the clock password.  (L) pg. 80
+    CSCTL1 |= DCOFSEL_3;                    // Set DCO Freq to 8 MHz.   (L) pg. 81
+    CSCTL2 |= SELM__DCOCLK;                 // Set MCLK to run on DCO.  (L) pg. 82
+    CSCTL2 |= SELS__DCOCLK;                 // Set SMCLK to run on DCO. (L) pg. 82
+    CSCTL2 |= SELA__DCOCLK;                 // Set ACLK to run on DCO.  (L) pg. 82
     // No divider applied
     CSCTL3 &= ~(BIT4 | BIT5 | BIT6);        // Clear relevant bits
 }

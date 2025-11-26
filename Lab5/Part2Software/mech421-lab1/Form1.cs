@@ -59,11 +59,15 @@ namespace mech421_lab1
                 serialPort1.PortName = comboBox1.Items[comboBox1.SelectedIndex].ToString();
                 serialPort1.Open();
 
+                trackBar_velocity.Enabled = true;
+
             }
             else
             {
                 buttonConnect.Text = "Connect";
                 serialPort1.Close();
+
+                trackBar_velocity.Enabled = false;
             }
         }
 
@@ -164,8 +168,25 @@ namespace mech421_lab1
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            byte[] TxByte = new byte[] { 255, 4, 0,0 };
+            byte[] TxByte = new byte[] { 255, 5, 0,0 };
             serialPort1.Write(TxByte, 0, 4);
+        }
+
+        private void trackBar_velocity_ValueChanged(object sender, EventArgs e)
+        {
+            int track_velocity = trackBar_velocity.Value;
+
+            if (track_velocity > 0)
+            {
+                byte[] TxByte = new byte[] { 255, 3, (byte)(Math.Abs(track_velocity) >> 7), (byte)(Math.Abs(track_velocity) & 0x7f) };
+                serialPort1.Write(TxByte, 0, 4);
+            }
+            else
+            {
+                byte[] TxByte = new byte[] { 255, 4, (byte)(Math.Abs(track_velocity) >> 7), (byte)(Math.Abs(track_velocity) & 0x7f) };
+                serialPort1.Write(TxByte, 0, 4);
+            }
+
         }
     }
 }

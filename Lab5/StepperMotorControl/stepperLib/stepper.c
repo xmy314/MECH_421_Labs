@@ -1,40 +1,26 @@
 #include <msp430.h> 
-#include <stepper.h>
+#include "stepper.h"
 
-#define true 1
-#define false 0
-typedef short bool;
+// // 65535 = ~121 Hz
+// // 8191 = ~1 kHz
+// // 245 = 32 kHz
+// #define STEPPER_UPCOUNT_TARGET 8191
+// // STEPPER_UPCOUNT_TARGET / 4
+// #define MAX_STEPPER_PHASE_DUTY (STEPPER_UPCOUNT_TARGET >> 2)
 
-typedef enum STEPPER_STATE {
-    A1_xx,
-    A1_B1,
-    xx_B1,
-    A2_B1,
-    A2_xx,
-    A2_B2,
-    xx_B2,
-    A1_B2
-} STEPPER_STATE;
-// 65535 = ~121 Hz
-// 8191 = ~1 kHz
-// 245 = 32 kHz
-#define STEPPER_UPCOUNT_TARGET 8191
-// STEPPER_UPCOUNT_TARGET / 4
-#define MAX_STEPPER_PHASE_DUTY (STEPPER_UPCOUNT_TARGET >> 2)
-
-#define STEPPER_A1 TB0CCR2
-#define STEPPER_A2 TB0CCR1
-#define STEPPER_B1 TB1CCR2
-#define STEPPER_B2 TB1CCR1
+// #define STEPPER_A1 TB0CCR2
+// #define STEPPER_A2 TB0CCR1
+// #define STEPPER_B1 TB1CCR2
+// #define STEPPER_B2 TB1CCR1
 
 
 unsigned int SpeedToDelay_HectoMicros(unsigned int speed)
 {
     if (speed > 50)
-        return 10;
+        return 200; // 
     if (speed < 1)
-        return 500;
-    return 500 / speed;
+        return 10000; // one step per second
+    return (10200 - (200*speed));
 }
 
 void SetupStepperTimers()
@@ -132,7 +118,7 @@ void IncrementHalfStep(STEPPER_STATE *currentState, bool directionCW)
         if (*currentState == A1_B2)
             *currentState = A1_xx;
         else
-            *currentState = *currSpeedentState + 1;
+            *currentState = (STEPPER_STATE)(*currentState + 1);
     }
     // Counterclockwise
     else
@@ -140,11 +126,32 @@ void IncrementHalfStep(STEPPER_STATE *currentState, bool directionCW)
         if (*currentState == A1_xx)
             *currentState = A1_B2;
         else
-            *currentState = *currentState - 1;
+            *currentState = (STEPPER_STATE)(*currentState - 1);
     }
 
     UpdatePinsBasedOnStepperState(currentState);
 }
+
+/**
+ * @brief Delays program execution for a specified time interval
+ *        measured in hecto-microseconds (100 µs units).
+ *
+ * This function generates a blocking delay based on an 8 MHz system clock.
+ * Each iteration of the loop calls __delay_cycles(800), which corresponds
+ * to approximately 100 microseconds at 8 MHz. The total delay is equal to
+ * (hectomicros × 100 µs).
+ *
+ * @param hectomicros
+ *        The delay duration expressed in units of 100 microseconds.
+ *        For example:
+ *          - hectomicros = 1 → ~100 µs delay
+ *          - hectomicros = 10 → ~1 ms delay
+ *          - hectomicros = 100 → ~10 ms delay
+ *
+ * @note This is a busy-wait delay; the CPU is halted during the delay
+ *       and cannot perform other tasks. For longer delays or multitasking,
+ *       consider using a hardware timer instead.
+ */
 
 void DelayHectoMicros_8Mhz(unsigned int hectomicros)
 {

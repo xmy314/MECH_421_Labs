@@ -18,6 +18,15 @@
                 "name": "GreenBoardTest",
                 "resourceId": "/GreenBoardTest"
             }
+        },
+        {
+            "name": "StepperMotorControl",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "StepperMotorControl",
+                "resourceId": "/StepperMotorControl"
+            }
         }
     ]
 }
