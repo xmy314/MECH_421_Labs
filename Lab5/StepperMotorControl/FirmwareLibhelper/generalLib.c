@@ -150,31 +150,29 @@ void UART_Init_9600_without_interrupt(void)
 
 void UART_Init_115200_without_interrupt(void){
     // UART set up
-    UCA0CTLW0 |= UCSWRST; // Hold UART state machine in reset state
-    UCA0CTLW0 |= UCSSEL__SMCLK; // Link SMCLK to UART
-    UCA0CTLW0 &= ~(BIT9|BITA); // Make sure it's UART Mode
+    UCA1CTLW0 |= UCSWRST; // Hold UART state machine in reset state
+    UCA1CTLW0 |= UCSSEL__SMCLK; // Link SMCLK to UART
+    UCA1CTLW0 &= ~(BIT9|BITA); // Make sure it's UART Mode
     // Set Baud rate pg. 490
-    UCA0BRW = 4; // Prescaler
-    UCA0MCTLW = 0x5551; // Setting up 9600 baud rate
-    UCA0CTLW0 &= ~UCPEN; // Disable Parity
-    UCA0CTLW0 &= ~UC7BIT; // Enable 8 bit data stream
-    UCA0CTLW0 &= ~UCSPB; // 1 stop bit
-    // Set up P2.0 and P2.1
-    P2DIR |= (BIT0|BIT1);
-    // Set up the pins to be Tx and Rx: P2.0 transmit, P2.1 receives
-    P2SEL0 &= ~(BIT0|BIT1); 
-    P2SEL1 |= (BIT0|BIT1);
+    UCA1BRW = 4; // Prescaler
+    UCA1MCTLW = 0x5551; // Setting up 9600 baud rate
+    UCA1CTLW0 &= ~UCPEN; // Disable Parity
+    UCA1CTLW0 &= ~UC7BIT; // Enable 8 bit data stream
+    UCA1CTLW0 &= ~UCSPB; // 1 stop bit
+    // Set up the pins to be Tx and Rx: P2.5 transmit, P2.6 receives
+    P2SEL0 &= ~(BIT5|BIT6); 
+    P2SEL1 |= (BIT5|BIT6);
 
     UCA0CTLW0 &= ~UCSWRST; // Start UART
 }
 
 void UART_Enable_Receive_Interrupt(void){
-    UCA0IE |= UCRXIE; // Enable UART receive interrupt
+    UCA1IE |= UCRXIE; // Enable UART receive interrupt
 }
 
 void UART_transmitByte(unsigned char byte){
-    while(!(UCA0IFG & UCTXIFG));
-        UCA0TXBUF = byte;
+    while(!(UCA1IFG & UCTXIFG));
+        UCA1TXBUF = byte;
 }
 
 void UART_SendPacket(unsigned char* data, unsigned char length){

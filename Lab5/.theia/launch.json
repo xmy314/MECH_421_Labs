@@ -27,6 +27,15 @@
                 "name": "StepperMotorControl",
                 "resourceId": "/StepperMotorControl"
             }
+        },
+        {
+            "name": "emptyProject",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "emptyProject",
+                "resourceId": "/emptyProject"
+            }
         }
     ]
 }

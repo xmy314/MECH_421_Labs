@@ -16,11 +16,11 @@
 
 unsigned int SpeedToDelay_HectoMicros(unsigned int speed)
 {
-    if (speed > 50)
-        return 200; // 
+    if (speed > 5000)
+        return 1; // 
     if (speed < 1)
-        return 10000; // one step per second
-    return (10200 - (200*speed));
+        return 5000; // one step per second
+    return 5000/speed;
 }
 
 void SetupStepperTimers()
@@ -158,6 +158,6 @@ void DelayHectoMicros_8Mhz(unsigned int hectomicros)
     // Assumes 8Mhz clock cycle
     while(hectomicros-- > 0)
     {
-        __delay_cycles(800);
+        __delay_cycles(80);
     }
 }

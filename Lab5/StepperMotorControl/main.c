@@ -7,7 +7,7 @@
 
 STEPPER_STATE stepper_state = A1_xx;
 volatile unsigned int continuous_speed = 1;
-volatile unsigned char continuous_run = false;
+volatile bool continuous_run = false;
 volatile unsigned char continuous_run_dir = CCW;
 
 #define BUF_SIZE 50
@@ -53,6 +53,11 @@ void processMessagePacket(Packet *packet) {
             break;
         case 0x05:
             continuous_run = false;
+            // Zero duty cycle to start with
+            STEPPER_A1 = 0;
+            STEPPER_A2 = 0;
+            STEPPER_B1 = 0;
+            STEPPER_B2 = 0;
             break;
             
     }
@@ -72,13 +77,28 @@ void main (void)
     // Initialize circular Buffer
     cBuffer_init(&uartBuffer, buffer_mem, BUF_SIZE);
 
-    Clock_Init_DCO_8MHz(); // Sets up SMCLK to 8MHz
+    CSCTL0 = 0xA500;                        // Write password to modify CS registers
+    CSCTL1 = DCOFSEL0 + DCOFSEL1;           // DCO = 8 MHz
+    CSCTL2 = SELM0 + SELM1 + SELA0 + SELA1 + SELS0 + SELS1; // MCLK = DCO, ACLK = DCO, SMCLK = DCO
+    CSCTL3 &= ~(BIT4 | BIT5 | BIT6);        // Clear relevant bits
 
     SetupStepperTimers();
+    
+    // Configure ports for UART
+    P2SEL0 &= ~(BIT5 + BIT6);
+    P2SEL1 |= BIT5 + BIT6;
 
-    UART_Init_115200_without_interrupt();
-    UART_Enable_Receive_Interrupt();
-    __enable_interrupt();
+    // Configure UART0
+    UCA1CTLW0 |= UCSWRST;
+    UCA1CTLW0 |= UCSSEL0;                    // Run the UART using ACLK
+    UCA1MCTLW = UCOS16 + UCBRF0 + 0x4900;   // Baud rate = 9600 from an 8 MHz clock
+    UCA1BRW = 52;
+    UCA1CTLW0 &= ~UCSWRST;
+
+    UCA1IE |= UCRXIE; // Enable UART receive interrupt
+    _EINT();
+    
+
 
     while(1){
         if(!Buffer_IsEmpty(&uartBuffer)) {
@@ -96,13 +116,13 @@ void main (void)
                     if (incomingPacket.cmd == 0x01) {
                         // CounterClockwise Step
                         continuous_run = false;
-                        IncrementHalfStep(&stepper_state, false);
+                        IncrementHalfStep(&stepper_state, CCW);
                         CurrentByte = IDLE;
                     }
                     else if (incomingPacket.cmd == 0x02) {
                         // Clockwise Step
                         continuous_run = false;
-                        IncrementHalfStep(&stepper_state, true);
+                        IncrementHalfStep(&stepper_state, CW);
                         CurrentByte = IDLE;
                     }
                     else {
@@ -117,9 +137,11 @@ void main (void)
 
                 case DATA2:
                     incomingPacket.byte2 = poppedByte;
-                    CurrentByte = ESC;
+                    processMessagePacket(&incomingPacket);
+                    CurrentByte = IDLE; // skip escape byte
                     break;
 
+                //No escape byte in packet...
                 case ESC:
                     incomingPacket.esc = poppedByte;
                     processMessagePacket(&incomingPacket);
@@ -131,7 +153,7 @@ void main (void)
             poppedByte = 0;
         }
 
-        if (continuous_run == 1){
+        if (continuous_run){
             DelayHectoMicros_8Mhz(SpeedToDelay_HectoMicros(continuous_speed));
             IncrementHalfStep(&stepper_state, continuous_run_dir);
         }
@@ -142,25 +164,21 @@ void main (void)
 
 #pragma vector = USCI_A1_VECTOR 
 __interrupt void USCI_A1_ISR(void) {
-    switch(__even_in_range(UCA1IV,18)) {
-        case 0x00:
-            // Vector 0: No interrupts
-            break;
-        case 0x02:  // Vector 2: UCRXIFG
-        {   // read Receive buffer
-            unsigned char RxByte = UCA0RXBUF;
-            
-            // Push received byte to buffer
-            Buffer_Push(&uartBuffer, RxByte);
-            break;
-        }
-        case 0x04: // Vector 4: UCTXIFG
-            break;
-        case 0x06: // Vector 6: UCSTTIFG
-            break;
-        case 0x08: // Vector 8: UCTXCPTIFG
-            break;
-        default: 
-            break;
+    if (UCA1IFG & UCRXIFG) {
+        // on recv
+        unsigned char RxByte = 0;
+        RxByte = UCA1RXBUF; // Get the new byte from the Rx buffer
+        Buffer_Push(&uartBuffer, RxByte);
+        UCA1IFG &= ~UCRXIFG;
+        UCA1TXBUF = RxByte;
+
+    } else if (UCA1IFG & UCTXIFG) {
+        // on tx complete
+        // if (queue_has_data(&UART_TX_QUEUE)) {
+        // UCA0TXBUF = dequeue(&UART_TX_QUEUE);
+        // }
+        UCA1IFG &= ~UCTXIFG;
     }
 }
+
+

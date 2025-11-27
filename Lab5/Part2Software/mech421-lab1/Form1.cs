@@ -109,7 +109,7 @@ namespace mech421_lab1
         {
 
             byte[] TxByte = new byte[] { 255, 2, 0,0 };
-            serialPort1.Write(TxByte, 0, 1);
+            serialPort1.Write(TxByte, 0, 3);
         }
         private void textBoxVelocity_TextChanged(object sender, EventArgs e)
         {
@@ -186,6 +186,8 @@ namespace mech421_lab1
                 byte[] TxByte = new byte[] { 255, 4, (byte)(Math.Abs(track_velocity) >> 7), (byte)(Math.Abs(track_velocity) & 0x7f) };
                 serialPort1.Write(TxByte, 0, 4);
             }
+
+            textBox_velocity.Text = track_velocity.ToString();
 
         }
     }

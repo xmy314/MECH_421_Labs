@@ -1,10 +1,10 @@
 ******************************************************************************
                   MSP430 Linker PC v21.6.1                     
 ******************************************************************************
->> Linked Wed Nov 26 02:24:30 2025
+>> Linked Wed Nov 26 17:54:46 2025
 
 OUTPUT FILE NAME:   <StepperMotorControl.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 0000c9f8
+ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 0000ca04
 
 
 MEMORY CONFIGURATION
@@ -17,7 +17,7 @@ MEMORY CONFIGURATION
   INFOB                 00001800   00000080  00000000  00000080  RWIX
   INFOA                 00001880   00000080  00000000  00000080  RWIX
   RAM                   00001c00   00000400  000000ed  00000313  RWIX
-  FRAM                  0000c200   00003d80  000008f8  00003488  RWIX
+  FRAM                  0000c200   00003d80  000008cc  000034b4  RWIX
   JTAGSIGNATURE         0000ff80   00000004  00000004  00000000  RWIX  ffff 
   BSLSIGNATURE          0000ff84   00000004  00000004  00000000  RWIX  ffff 
   IPESIGNATURE          0000ff88   00000008  00000008  00000000  RWIX  ffff 
@@ -113,38 +113,34 @@ section   page    origin      length       input sections
 .const     0    0000c22c    0000002e     
                   0000c22c    0000002e     generalLib.obj (.const:.string)
 
-.text      0    0000c400    000006f8     
-                  0000c400    00000104     main.obj (.text:main)
-                  0000c504    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  0000c5f2    0000008a     stepper.obj (.text:UpdatePinsBasedOnStepperState)
-                  0000c67c    0000007c     stepper.obj (.text:SetupStepperTimers)
-                  0000c6f8    0000006e     main.obj (.text:processMessagePacket)
-                  0000c766    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
-                  0000c7d0    0000004a     generalLib.obj (.text:Buffer_Push)
-                  0000c81a    00000044     generalLib.obj (.text:UART_Init_115200_without_interrupt)
-                  0000c85e    00000040     generalLib.obj (.text:Buffer_Pop)
-                  0000c89e    00000040     rts430x_lc_sd_eabi.lib : cpy_util.asm.obj (.text:__memcpy_far)
-                  0000c8de    0000003e                            : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  0000c91c    0000003c                            : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  0000c958    00000030     stepper.obj (.text:IncrementHalfStep)
-                  0000c988    00000028     stepper.obj (.text:SpeedToDelay_HectoMicros)
-                  0000c9b0    00000026     generalLib.obj (.text:Clock_Init_DCO_8MHz)
-                  0000c9d6    00000022     MPU_INIT_FR57XX_LIB_CCS_msp430_large_code_small_data.lib : mpu_init_fr57xx.obj (.text:__mpu_init)
-                  0000c9f8    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
-                  0000ca18    0000001e     generalLib.obj (.text:UART_SendPacket)
-                  0000ca36    0000001a     main.obj (.text:_isr:USCI_A1_ISR)
-                  0000ca50    00000018     stepper.obj (.text:DelayHectoMicros_8Mhz)
-                  0000ca68    00000018     rts430x_lc_sd_eabi.lib : mult16_f5hw.asm.obj (.text)
-                  0000ca80    00000016     generalLib.obj (.text:Buffer_IsEmpty)
-                  0000ca96    00000016     generalLib.obj (.text:cBuffer_init)
-                  0000caac    00000016     rts430x_lc_sd_eabi.lib : div16u.asm.obj (.text)
-                  0000cac2    0000000e     generalLib.obj (.text:Buffer_IsFull)
-                  0000cad0    0000000e     generalLib.obj (.text:UART_transmitByte)
-                  0000cade    00000008     rts430x_lc_sd_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
-                  0000cae6    00000006     generalLib.obj (.text:UART_Enable_Receive_Interrupt)
-                  0000caec    00000006     rts430x_lc_sd_eabi.lib : exit.c.obj (.text:abort)
-                  0000caf2    00000004                            : pre_init.c.obj (.text:_system_pre_init)
-                  0000caf6    00000002                            : startup.c.obj (.text:_system_post_cinit)
+.text      0    0000c400    000006cc     
+                  0000c400    00000140     main.obj (.text:main)
+                  0000c540    000000ee     rts430x_lc_sd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  0000c62e    0000008a     stepper.obj (.text:UpdatePinsBasedOnStepperState)
+                  0000c6b8    0000007e     main.obj (.text:processMessagePacket)
+                  0000c736    0000007c     stepper.obj (.text:SetupStepperTimers)
+                  0000c7b2    0000006a     rts430x_lc_sd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
+                  0000c81c    0000004a     generalLib.obj (.text:Buffer_Push)
+                  0000c866    00000040     generalLib.obj (.text:Buffer_Pop)
+                  0000c8a6    00000040     rts430x_lc_sd_eabi.lib : cpy_util.asm.obj (.text:__memcpy_far)
+                  0000c8e6    0000003e                            : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  0000c924    0000003c                            : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0000c960    00000032     main.obj (.text:_isr:USCI_A1_ISR)
+                  0000c992    00000030     stepper.obj (.text:IncrementHalfStep)
+                  0000c9c2    00000022     MPU_INIT_FR57XX_LIB_CCS_msp430_large_code_small_data.lib : mpu_init_fr57xx.obj (.text:__mpu_init)
+                  0000c9e4    00000020     stepper.obj (.text:SpeedToDelay_HectoMicros)
+                  0000ca04    00000020     rts430x_lc_sd_eabi.lib : boot.c.obj (.text:_isr:_c_int00_noargs_mpu)
+                  0000ca24    0000001e     generalLib.obj (.text:UART_SendPacket)
+                  0000ca42    00000018     stepper.obj (.text:DelayHectoMicros_8Mhz)
+                  0000ca5a    00000016     generalLib.obj (.text:Buffer_IsEmpty)
+                  0000ca70    00000016     generalLib.obj (.text:cBuffer_init)
+                  0000ca86    00000016     rts430x_lc_sd_eabi.lib : div16u.asm.obj (.text)
+                  0000ca9c    0000000e     generalLib.obj (.text:Buffer_IsFull)
+                  0000caaa    0000000e     generalLib.obj (.text:UART_transmitByte)
+                  0000cab8    00000008     rts430x_lc_sd_eabi.lib : isr_trap.asm.obj (.text:_isr:__TI_ISR_TRAP)
+                  0000cac0    00000006                            : exit.c.obj (.text:abort)
+                  0000cac6    00000004                            : pre_init.c.obj (.text:_system_pre_init)
+                  0000caca    00000002                            : startup.c.obj (.text:_system_post_cinit)
 
 .bss       0    00001c00    0000003c     UNINITIALIZED
                   00001c00    00000032     main.obj (.bss:buffer_mem)
@@ -257,19 +253,19 @@ MODULE SUMMARY
        Module                       code   ro data   rw data
        ------                       ----   -------   -------
     .\
-       main.obj                     396    2         77     
+       main.obj                     496    2         77     
     +--+----------------------------+------+---------+---------+
-       Total:                       396    2         77     
+       Total:                       496    2         77     
                                                             
     .\FirmwareLibhelper\
-       generalLib.obj               352    46        0      
+       generalLib.obj               240    46        0      
     +--+----------------------------+------+---------+---------+
-       Total:                       352    46        0      
+       Total:                       240    46        0      
                                                             
     .\stepperLib\
-       stepper.obj                  374    0         0      
+       stepper.obj                  366    0         0      
     +--+----------------------------+------+---------+---------+
-       Total:                       374    0         0      
+       Total:                       366    0         0      
                                                             
     C:\ti\ccs2031\ccs\ccs_base\msp430\lib\FR57xx\MPU_INIT_FR57XX_LIB_CCS_msp430_large_code_small_data.lib
        mpu_init_fr57xx.obj          34     0         0      
@@ -283,7 +279,6 @@ MODULE SUMMARY
        copy_zero_init.c.obj         62     0         0      
        copy_decompress_none.c.obj   60     0         0      
        boot.c.obj                   32     2         0      
-       mult16_f5hw.asm.obj          24     0         0      
        div16u.asm.obj               22     0         0      
        isr_trap.asm.obj             8      0         0      
        exit.c.obj                   6      0         0      
@@ -313,12 +308,12 @@ MODULE SUMMARY
        int54.asm.obj                0      2         0      
        startup.c.obj                2      0         0      
     +--+----------------------------+------+---------+---------+
-       Total:                       628    48        0      
+       Total:                       604    48        0      
                                                             
        Stack:                       0      0         160    
        Linker Generated:            0      44        0      
     +--+----------------------------+------+---------+---------+
-       Grand Total:                 1784   140       237    
+       Grand Total:                 1740   140       237    
 
 
 LINKER GENERATED COPY TABLES
@@ -372,11 +367,11 @@ address   name
 00000712  ADC10MEM0_L                            
 000004be  BCD2BIN                                
 000004bc  BIN2BCD                                
-0000ca80  Buffer_IsEmpty                         
-0000cac2  Buffer_IsFull                          
-0000c85e  Buffer_Pop                             
-0000c7d0  Buffer_Push                            
-0000caec  C$$EXIT                                
+0000ca5a  Buffer_IsEmpty                         
+0000ca9c  Buffer_IsFull                          
+0000c866  Buffer_Pop                             
+0000c81c  Buffer_Push                            
+0000cac0  C$$EXIT                                
 000008c0  CDCTL0                                 
 000008c1  CDCTL0_H                               
 000008c0  CDCTL0_L                               
@@ -428,7 +423,6 @@ address   name
 0000016c  CSCTL6                                 
 0000016d  CSCTL6_H                               
 0000016c  CSCTL6_L                               
-0000c9b0  Clock_Init_DCO_8MHz                    
 00001c42  CurrentByte                            
 00000510  DMA0CTL                                
 00000516  DMA0DA                                 
@@ -460,7 +454,7 @@ address   name
 00000506  DMACTL3                                
 00000508  DMACTL4                                
 0000050e  DMAIV                                  
-0000ca50  DelayHectoMicros_8Mhz                  
+0000ca42  DelayHectoMicros_8Mhz                  
 00000140  FRCTL0                                 
 00000141  FRCTL0_H                               
 00000140  FRCTL0_L                               
@@ -470,7 +464,7 @@ address   name
 00000146  GCCTL1                                 
 00000147  GCCTL1_H                               
 00000146  GCCTL1_L                               
-0000c958  IncrementHalfStep                      
+0000c992  IncrementHalfStep                      
 000004c4  MAC                                    
 000004da  MAC32H                                 
 000004db  MAC32H_H                               
@@ -725,8 +719,8 @@ address   name
 0000019a  SYSUNIV                                
 0000019b  SYSUNIV_H                              
 0000019a  SYSUNIV_L                              
-0000c67c  SetupStepperTimers                     
-0000c988  SpeedToDelay_HectoMicros               
+0000c736  SetupStepperTimers                     
+0000c9e4  SpeedToDelay_HectoMicros               
 00000352  TA0CCR0                                
 00000354  TA0CCR1                                
 00000356  TA0CCR2                                
@@ -777,10 +771,8 @@ address   name
 00000460  TB2EX0                                 
 0000046e  TB2IV                                  
 00000450  TB2R                                   
-0000cae6  UART_Enable_Receive_Interrupt          
-0000c81a  UART_Init_115200_without_interrupt     
-0000ca18  UART_SendPacket                        
-0000cad0  UART_transmitByte                      
+0000ca24  UART_SendPacket                        
+0000caaa  UART_transmitByte                      
 000005d0  UCA0ABCTL                              
 000005c6  UCA0BRW                                
 000005c7  UCA0BRW_H                              
@@ -890,8 +882,8 @@ address   name
 0000064e  UCB0TXBUF                              
 0000064f  UCB0TXBUF_H                            
 0000064e  UCB0TXBUF_L                            
-0000ca36  USCI_A1_ISR                            
-0000c5f2  UpdatePinsBasedOnStepperState          
+0000c960  USCI_A1_ISR                            
+0000c62e  UpdatePinsBasedOnStepperState          
 0000015c  WDTCTL                                 
 0000015d  WDTCTL_H                               
 0000015c  WDTCTL_L                               
@@ -902,10 +894,10 @@ address   name
 0000c22c  __TI_CINIT_Warm                        
 0000c200  __TI_Handler_Table_Base                
 0000c20c  __TI_Handler_Table_Limit               
-0000cade  __TI_ISR_TRAP                          
-0000c766  __TI_auto_init_nobinit_nopinit_hold_wdt
-0000c504  __TI_decompress_lzss                   
-0000c91c  __TI_decompress_none                   
+0000cab8  __TI_ISR_TRAP                          
+0000c7b2  __TI_auto_init_nobinit_nopinit_hold_wdt
+0000c540  __TI_decompress_lzss                   
+0000c924  __TI_decompress_none                   
 0000ffce  __TI_int31                             
 0000ffd0  __TI_int32                             
 0000ffd2  __TI_int33                             
@@ -933,22 +925,21 @@ address   name
 ffffffff  __TI_pprof_out_hndl                    
 ffffffff  __TI_prof_data_size                    
 ffffffff  __TI_prof_data_start                   
-0000c8de  __TI_zero_init_nomemset                
+0000c8e6  __TI_zero_init_nomemset                
 ffffffff  __c_args__                             
-0000c89e  __memcpy_far                           
-0000c9d6  __mpu_init                             
+0000c8a6  __memcpy_far                           
+0000c9c2  __mpu_init                             
 00007513  __mpusam                               
 00000201  __mpuseg                               
-0000caac  __mspabi_divu                          
-0000ca68  __mspabi_mpyi_f5hw                     
-0000caac  __mspabi_remu                          
-0000c9f8  _c_int00_noargs_mpu                    
+0000ca86  __mspabi_divu                          
+0000ca86  __mspabi_remu                          
+0000ca04  _c_int00_noargs_mpu                    
 0000fffe  _reset_vector                          
 00001f60  _stack                                 
-0000caf6  _system_post_cinit                     
-0000caf2  _system_pre_init                       
-0000caec  abort                                  
-0000ca96  cBuffer_init                           
+0000caca  _system_post_cinit                     
+0000cac6  _system_pre_init                       
+0000cac0  abort                                  
+0000ca70  cBuffer_init                           
 00001c46  combinedMessage                        
 00001c40  continuous_run                         
 00001c41  continuous_run_dir                     
@@ -961,7 +952,7 @@ ffffffff  __c_args__
 00000001  mpusb1                                 
 00000002  mpusb2                                 
 00001c44  poppedByte                             
-0000c6f8  processMessagePacket                   
+0000c6b8  processMessagePacket                   
 00001c3c  stepper_state                          
 
 
@@ -1531,38 +1522,34 @@ address   name
 0000c22c  __TI_CINIT_Warm                        
 0000c400  fram_rx_start                          
 0000c400  main                                   
-0000c504  __TI_decompress_lzss                   
-0000c5f2  UpdatePinsBasedOnStepperState          
-0000c67c  SetupStepperTimers                     
-0000c6f8  processMessagePacket                   
-0000c766  __TI_auto_init_nobinit_nopinit_hold_wdt
-0000c7d0  Buffer_Push                            
-0000c81a  UART_Init_115200_without_interrupt     
-0000c85e  Buffer_Pop                             
-0000c89e  __memcpy_far                           
-0000c8de  __TI_zero_init_nomemset                
-0000c91c  __TI_decompress_none                   
-0000c958  IncrementHalfStep                      
-0000c988  SpeedToDelay_HectoMicros               
-0000c9b0  Clock_Init_DCO_8MHz                    
-0000c9d6  __mpu_init                             
-0000c9f8  _c_int00_noargs_mpu                    
-0000ca18  UART_SendPacket                        
-0000ca36  USCI_A1_ISR                            
-0000ca50  DelayHectoMicros_8Mhz                  
-0000ca68  __mspabi_mpyi_f5hw                     
-0000ca80  Buffer_IsEmpty                         
-0000ca96  cBuffer_init                           
-0000caac  __mspabi_divu                          
-0000caac  __mspabi_remu                          
-0000cac2  Buffer_IsFull                          
-0000cad0  UART_transmitByte                      
-0000cade  __TI_ISR_TRAP                          
-0000cae6  UART_Enable_Receive_Interrupt          
-0000caec  C$$EXIT                                
-0000caec  abort                                  
-0000caf2  _system_pre_init                       
-0000caf6  _system_post_cinit                     
+0000c540  __TI_decompress_lzss                   
+0000c62e  UpdatePinsBasedOnStepperState          
+0000c6b8  processMessagePacket                   
+0000c736  SetupStepperTimers                     
+0000c7b2  __TI_auto_init_nobinit_nopinit_hold_wdt
+0000c81c  Buffer_Push                            
+0000c866  Buffer_Pop                             
+0000c8a6  __memcpy_far                           
+0000c8e6  __TI_zero_init_nomemset                
+0000c924  __TI_decompress_none                   
+0000c960  USCI_A1_ISR                            
+0000c992  IncrementHalfStep                      
+0000c9c2  __mpu_init                             
+0000c9e4  SpeedToDelay_HectoMicros               
+0000ca04  _c_int00_noargs_mpu                    
+0000ca24  UART_SendPacket                        
+0000ca42  DelayHectoMicros_8Mhz                  
+0000ca5a  Buffer_IsEmpty                         
+0000ca70  cBuffer_init                           
+0000ca86  __mspabi_divu                          
+0000ca86  __mspabi_remu                          
+0000ca9c  Buffer_IsFull                          
+0000caaa  UART_transmitByte                      
+0000cab8  __TI_ISR_TRAP                          
+0000cac0  C$$EXIT                                
+0000cac0  abort                                  
+0000cac6  _system_pre_init                       
+0000caca  _system_post_cinit                     
 0000ffce  __TI_int31                             
 0000ffd0  __TI_int32                             
 0000ffd2  __TI_int33                             
@@ -1593,4 +1580,4 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start                   
 ffffffff  __c_args__                             
 
-[623 symbols]
+[619 symbols]

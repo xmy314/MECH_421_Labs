@@ -42,6 +42,7 @@
             this.buttonStop = new System.Windows.Forms.Button();
             this.trackBar_velocity = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBox_velocity = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_velocity)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,18 +55,20 @@
             // 
             this.comboBox1.AllowDrop = true;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 12);
+            this.comboBox1.Location = new System.Drawing.Point(16, 15);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(160, 24);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.Click += new System.EventHandler(this.comboBox1_Click);
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(139, 12);
+            this.buttonConnect.Location = new System.Drawing.Point(185, 15);
+            this.buttonConnect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(100, 23);
+            this.buttonConnect.Size = new System.Drawing.Size(133, 28);
             this.buttonConnect.TabIndex = 1;
             this.buttonConnect.Text = "Connect";
             this.buttonConnect.UseVisualStyleBackColor = true;
@@ -74,17 +77,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 73);
+            this.label1.Location = new System.Drawing.Point(36, 90);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(109, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Step Per Second";
             // 
             // textBoxVelocity
             // 
-            this.textBoxVelocity.Location = new System.Drawing.Point(139, 70);
+            this.textBoxVelocity.Location = new System.Drawing.Point(185, 86);
+            this.textBoxVelocity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxVelocity.Name = "textBoxVelocity";
-            this.textBoxVelocity.Size = new System.Drawing.Size(100, 20);
+            this.textBoxVelocity.Size = new System.Drawing.Size(132, 22);
             this.textBoxVelocity.TabIndex = 6;
             this.textBoxVelocity.TextChanged += new System.EventHandler(this.textBoxVelocity_TextChanged);
             // 
@@ -100,9 +105,10 @@
             // 
             // buttonCWStep
             // 
-            this.buttonCWStep.Location = new System.Drawing.Point(139, 41);
+            this.buttonCWStep.Location = new System.Drawing.Point(185, 50);
+            this.buttonCWStep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCWStep.Name = "buttonCWStep";
-            this.buttonCWStep.Size = new System.Drawing.Size(100, 23);
+            this.buttonCWStep.Size = new System.Drawing.Size(133, 28);
             this.buttonCWStep.TabIndex = 21;
             this.buttonCWStep.Text = "CW Step";
             this.buttonCWStep.UseVisualStyleBackColor = true;
@@ -110,9 +116,10 @@
             // 
             // buttonCCWStep
             // 
-            this.buttonCCWStep.Location = new System.Drawing.Point(15, 41);
+            this.buttonCCWStep.Location = new System.Drawing.Point(20, 50);
+            this.buttonCCWStep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonCCWStep.Name = "buttonCCWStep";
-            this.buttonCCWStep.Size = new System.Drawing.Size(100, 23);
+            this.buttonCCWStep.Size = new System.Drawing.Size(133, 28);
             this.buttonCCWStep.TabIndex = 22;
             this.buttonCCWStep.Text = "CCW Step";
             this.buttonCCWStep.UseVisualStyleBackColor = true;
@@ -120,9 +127,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(139, 96);
+            this.button3.Location = new System.Drawing.Point(185, 118);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 23);
+            this.button3.Size = new System.Drawing.Size(133, 28);
             this.button3.TabIndex = 23;
             this.button3.Text = "Constant Velocity";
             this.button3.UseVisualStyleBackColor = true;
@@ -130,9 +138,10 @@
             // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(15, 96);
+            this.buttonStop.Location = new System.Drawing.Point(20, 118);
+            this.buttonStop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(100, 23);
+            this.buttonStop.Size = new System.Drawing.Size(133, 28);
             this.buttonStop.TabIndex = 24;
             this.buttonStop.Text = "Stop";
             this.buttonStop.UseVisualStyleBackColor = true;
@@ -141,28 +150,38 @@
             // trackBar_velocity
             // 
             this.trackBar_velocity.Enabled = false;
-            this.trackBar_velocity.Location = new System.Drawing.Point(12, 190);
-            this.trackBar_velocity.Maximum = 50;
-            this.trackBar_velocity.Minimum = -50;
+            this.trackBar_velocity.Location = new System.Drawing.Point(16, 234);
+            this.trackBar_velocity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBar_velocity.Maximum = 450;
+            this.trackBar_velocity.Minimum = -450;
             this.trackBar_velocity.Name = "trackBar_velocity";
-            this.trackBar_velocity.Size = new System.Drawing.Size(535, 45);
+            this.trackBar_velocity.Size = new System.Drawing.Size(713, 56);
             this.trackBar_velocity.TabIndex = 25;
             this.trackBar_velocity.ValueChanged += new System.EventHandler(this.trackBar_velocity_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 165);
+            this.label2.Location = new System.Drawing.Point(16, 203);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(102, 16);
             this.label2.TabIndex = 26;
             this.label2.Text = "Stepper Speed:";
             // 
+            // textBox_velocity
+            // 
+            this.textBox_velocity.Location = new System.Drawing.Point(20, 306);
+            this.textBox_velocity.Name = "textBox_velocity";
+            this.textBox_velocity.Size = new System.Drawing.Size(167, 22);
+            this.textBox_velocity.TabIndex = 27;
+            // 
             // Single_Stepper_Controller
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 333);
+            this.ClientSize = new System.Drawing.Size(745, 410);
+            this.Controls.Add(this.textBox_velocity);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.trackBar_velocity);
             this.Controls.Add(this.buttonStop);
@@ -173,6 +192,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonConnect);
             this.Controls.Add(this.comboBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Single_Stepper_Controller";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -198,6 +218,7 @@
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.TrackBar trackBar_velocity;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox_velocity;
     }
 }
 
