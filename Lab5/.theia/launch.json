@@ -29,12 +29,21 @@
             }
         },
         {
-            "name": "emptyProject",
+            "name": "externalMotorDrivertest",
             "type": "ccs-debug",
             "request": "launch",
             "projectInfo": {
-                "name": "emptyProject",
-                "resourceId": "/emptyProject"
+                "name": "externalMotorDrivertest",
+                "resourceId": "/externalMotorDrivertest"
+            }
+        },
+        {
+            "name": "2-axiscontrol",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "2-axiscontrol",
+                "resourceId": "/2-axiscontrol"
             }
         }
     ]

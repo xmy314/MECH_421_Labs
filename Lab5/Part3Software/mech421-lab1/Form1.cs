@@ -117,7 +117,7 @@ namespace mech421_lab1
 
         private void buttonSelectCSV_Click(object sender, EventArgs e)
         {
-            SaveFileDialog save_dialog = new SaveFileDialog();
+            OpenFileDialog save_dialog = new OpenFileDialog();
 
             save_dialog.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
             save_dialog.FilterIndex = 2;
@@ -312,6 +312,8 @@ namespace mech421_lab1
             StreamReader in_file = new StreamReader(textBoxCSVPath.Text);
 
             textBoxCommandStash.Text = in_file.ReadToEnd();
+
+            in_file.Close();
         }
 
         private void buttonSaveCSV_Click(object sender, EventArgs e)
@@ -320,6 +322,8 @@ namespace mech421_lab1
             StreamWriter out_file = new StreamWriter(textBoxCSVPath.Text);
 
             out_file.Write(textBoxCommandStash.Text);
+
+            out_file.Close();
         }
     }
 }
