@@ -50,6 +50,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // serialPort1
@@ -241,11 +244,38 @@
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(139, 239);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 45;
+            this.button1.Text = "to one at a time";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(139, 268);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 23);
+            this.button2.TabIndex = 46;
+            this.button2.Text = "send one";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 50;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // Mutli_Stepper_Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 352);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.label5);
@@ -297,6 +327,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonStop;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

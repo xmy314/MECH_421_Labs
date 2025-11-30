@@ -18,6 +18,8 @@ namespace mech421_lab1
     {
 
         ConcurrentQueue<Int32> dataQueue = new ConcurrentQueue<Int32>();
+        int prior_length = 0;
+        bool all_at_once = true;
         bool sending = false;
         public Mutli_Stepper_Controller()
         {
@@ -108,11 +110,20 @@ namespace mech421_lab1
             Int32 v;
             while (dataQueue.TryDequeue(out v))
             {
-                if (v == 1)
+                if (v == 1 && all_at_once)
                 {
-                    sending = sendOne();
+                    //    sending = sendOne();
+                    timer2.Enabled = false;
+                    timer2.Interval = (int) ((float)prior_length *1.5f);
+                    timer2.Enabled = true;
                 }
             }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timer2.Enabled = false;
+            sendOne();
         }
 
         private void buttonSelectCSV_Click(object sender, EventArgs e)
@@ -248,7 +259,10 @@ namespace mech421_lab1
         private void buttonStart_Click(object sender, EventArgs e)
         {
             textBoxCommandQueue.Text = textBoxCommandStash.Text;
-            sending = sendOne();
+            if (all_at_once)
+            {
+                sending = sendOne();
+            }
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
@@ -302,7 +316,7 @@ namespace mech421_lab1
                 }
                 data[i] = (byte)val;
             }
-
+            prior_length = (int)(data[1] + data[2]);
             serialPort1.Write(data, 0, 5);
             return true;
         }
@@ -324,6 +338,26 @@ namespace mech421_lab1
             out_file.Write(textBoxCommandStash.Text);
 
             out_file.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (all_at_once)
+            {
+                button1.Text = "send all";
+                all_at_once = false;
+            
+            }
+            else
+            {
+                button1.Text = "to one at a time";
+                all_at_once = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            sendOne();
         }
     }
 }

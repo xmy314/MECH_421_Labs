@@ -1,7 +1,7 @@
 ******************************************************************************
                   MSP430 Linker PC v21.6.1                     
 ******************************************************************************
->> Linked Fri Nov 28 18:44:44 2025
+>> Linked Sat Nov 29 18:43:57 2025
 
 OUTPUT FILE NAME:   <2-axiscontrol.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 0000cda2
@@ -278,19 +278,19 @@ MODULE SUMMARY
     +--+----------------------------+------+---------+---------+
        Total:                       364    0         0      
                                                             
-    C:\ti\ccs2031\ccs\ccs_base\msp430\lib\5xx_6xx_FRxx\MSPMATHLIB_CCS_msp430_5xx_6xx_FRxx_large_code_small_data.lib
+    C:\ti\ccs2020\ccs\ccs_base\msp430\lib\5xx_6xx_FRxx\MSPMATHLIB_CCS_msp430_5xx_6xx_FRxx_large_code_small_data.lib
        msp430_sqrt.o                308    0         0      
        msp430_common.o              202    0         0      
        msp430_tables.o              0      192       0      
     +--+----------------------------+------+---------+---------+
        Total:                       510    192       0      
                                                             
-    C:\ti\ccs2031\ccs\ccs_base\msp430\lib\FR57xx\MPU_INIT_FR57XX_LIB_CCS_msp430_large_code_small_data.lib
+    C:\ti\ccs2020\ccs\ccs_base\msp430\lib\FR57xx\MPU_INIT_FR57XX_LIB_CCS_msp430_large_code_small_data.lib
        mpu_init_fr57xx.obj          34     0         0      
     +--+----------------------------+------+---------+---------+
        Total:                       34     0         0      
                                                             
-    C:\ti\ccs2031\ccs\tools\compiler\ti-cgt-msp430_21.6.1.LTS\lib\rts430x_lc_sd_eabi.lib
+    C:\ti\ccs2020\ccs\tools\compiler\ti-cgt-msp430_21.6.1.LTS\lib\rts430x_lc_sd_eabi.lib
        copy_decompress_lzss.c.obj   238    0         0      
        autoinit.c.obj               106    0         0      
        fs_toi.asm.obj               104    0         0      
