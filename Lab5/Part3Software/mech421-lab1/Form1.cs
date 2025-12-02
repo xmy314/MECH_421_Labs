@@ -114,7 +114,7 @@ namespace mech421_lab1
                 {
                     //    sending = sendOne();
                     timer2.Enabled = false;
-                    timer2.Interval = (int) ((float)prior_length *1.5f);
+                    timer2.Interval = (int) Math.Min((float)prior_length *1.5f,100f);
                     timer2.Enabled = true;
                 }
             }
@@ -156,15 +156,15 @@ namespace mech421_lab1
                 return;
             }
 
-            if (V >= 255)
+            if (V >= 1000)
             {
-                textBoxXPos.Text = "";
+                textBoxXPos.Text = "999";
                 return;
             }
 
-            if (V <= -255)
+            if (V <= -1000)
             {
-                textBoxXPos.Text = "";
+                textBoxXPos.Text = "-999";
                 return;
 
             }
@@ -185,15 +185,15 @@ namespace mech421_lab1
                 return;
             }
 
-            if (V >= 255)
+            if (V >= 1000)
             {
-                textBoxYPos.Text = "";
+                textBoxXPos.Text = "999";
                 return;
             }
 
-            if (V <= -255)
+            if (V <= -1000)
             {
-                textBoxYPos.Text = "";
+                textBoxXPos.Text = "-999";
                 return;
 
             }
@@ -253,7 +253,34 @@ namespace mech421_lab1
                 escape += 2;
             }
 
-            textBoxCommandStash.Text += "255, " + Math.Abs(x_pos).ToString() + "," + Math.Abs(y_pos).ToString() + "," + Math.Abs(vel).ToString()+","+escape.ToString()+"\r\n";
+            int max_travel = Math.Max(Math.Abs(x_pos), Math.Abs(y_pos));
+            int segment_count = max_travel/ 200;
+
+            float whole_portion = segment_count * 200f / max_travel;
+            int min_travel_step = (int)(whole_portion * (float)Math.Min(Math.Abs(x_pos), Math.Abs(y_pos))) / segment_count;
+
+            for (int i = 0; i < segment_count; i++)
+            {
+                if (Math.Abs(x_pos) > Math.Abs(y_pos))
+                {
+                    textBoxCommandStash.Text += "255, 200," +min_travel_step.ToString() + "," + Math.Abs(vel).ToString() + "," + escape.ToString() + "\r\n";
+                }
+                else
+                {
+                    textBoxCommandStash.Text += "255, " + min_travel_step.ToString() + ",200," + Math.Abs(vel).ToString() + "," + escape.ToString() + "\r\n";
+                }
+
+            }
+
+            if (Math.Abs(x_pos) > Math.Abs(y_pos))
+            {
+                textBoxCommandStash.Text += "255, " + (Math.Abs(x_pos)-200*segment_count).ToString() + "," + (Math.Abs(y_pos)-min_travel_step*segment_count).ToString() + "," + Math.Abs(vel).ToString() + "," + escape.ToString() + "\r\n";
+            }
+            else
+            {
+                textBoxCommandStash.Text += "255, " + (Math.Abs(x_pos) - min_travel_step * segment_count).ToString() + "," + (Math.Abs(y_pos)-200*segment_count).ToString() + "," + Math.Abs(vel).ToString() + "," + escape.ToString() + "\r\n";
+            }
+
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -316,9 +343,17 @@ namespace mech421_lab1
                 }
                 data[i] = (byte)val;
             }
-            prior_length = (int)(data[1] + data[2]);
-            serialPort1.Write(data, 0, 5);
-            return true;
+
+            if (data[1] != 0 || data[2] != 0)
+            {
+                prior_length = (int)(data[1] + data[2]);
+                serialPort1.Write(data, 0, 5);
+            }
+            else
+            {
+                sendOne();
+            }
+                return true;
         }
 
         private void buttonLoadCSV_Click(object sender, EventArgs e)
